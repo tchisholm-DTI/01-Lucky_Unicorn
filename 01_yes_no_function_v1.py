@@ -1,24 +1,24 @@
 # Functions go here ...
+def yes_no(question):
+    valid = False
+    while not valid:
+        response = input(question) .lower()
+
+        if response == "yes" or response == "y":
+            response = "yes"
+            return response
+
+        elif response == "no" or response == "n":
+            response = "no"
+            return response
+        else:
+            print("Please answer yes/no")
+
 
 # Main Routine goes here ...
+show_instructions = yes_no("Have you played the game before? ")
 
-show_instructions = ""
-while show_instructions.lower() != "xxx":
-
-    # Asks the user if they have played before
-    show_instructions = input("Have you played this game before? ") .lower()
-
-    # If they say yes, output 'program continues'
-    # If they say no, output 'display instructions'
-    # If the answer is invalid, print an error
-
-    if show_instructions == "yes" or show_instructions == "y":
-        show_instructions = "yes"
-        print("program continues")
-
-    elif show_instructions == "no" or show_instructions == "n":
-        show_instructions = "no"
-        print("Display instructions")
-
-    else:
-        print("Please answer yes/no")
+print("You chose {}".format(show_instructions))
+print()
+having_fun = yes_no("Are you having fun? ")
+print("you said {} to having fun".format(having_fun))
