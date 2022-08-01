@@ -16,3 +16,6 @@ for item in range(0, 20):
         balance -= 1
     else:
         balance -= 0.5
+
+    # Output
+    print("Token: {} , Balance: ${}".format(chosen, balance))
