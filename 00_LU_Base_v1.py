@@ -1,23 +1,24 @@
 import random
 # Functions go here ...
+
+
 def yes_no(question):
     valid = False
     while not valid:
         response = input(question) .lower()
 
         if response == "yes" or response == "y":
-            response = "yes"
-            return response
+            return "yes"
 
         elif response == "no" or response == "n":
-            response = "no"
-            return response
+            return "no"
         else:
             print("Please answer yes/no")
 
 
 def instructions():
-    print("**** How to Play ****")
+    statement_generator("How to Play", "*")
+
     print()
     print("Choose a starting amount (minimum $1, maximum $10")
     print()
@@ -28,6 +29,12 @@ def instructions():
     print("Horse: $0.50 (balance decreases by $0.50)")
     print("Zebra: $0.50 (balance decreases by $0.50)")
     print("Donkey: $0.00 (balance decreases by $1.00)")
+    print()
+    print("Can you avoid the donkeys, get the unicorns and walk home with the money? ")
+    print()
+    print("Hint: to quit while you are ahead, type 'xxx' instead of pressing <enter> ")
+    print()
+    statement_generator("Let's get Started ...", "-")
     return ""
 
 
@@ -67,7 +74,7 @@ def statement_generator(statement, decoration):
 
 
 # Main Routine goes here ...
-statement_generator("welcome to the Lucky Unicorn Game", "*")
+statement_generator("Welcome to the Lucky Unicorn Game", "*")
 print()
 
 played_before = yes_no("Have you played the game before? ")
@@ -101,12 +108,14 @@ while play_again == "":
     # user gets a unicorn (add $4 to balance)
     if 1 <= chosen_num <= 5:
         chosen = "unicorn"
+        decoration = "!"
         balance += 4
 
     # If the random # is between 6 and 36
     # user gets a donkey (subtract $1 from balance)
     elif 6 <= chosen_num <= 36:
         chosen = "donkey"
+        decoration = "D"
         balance -= 1
 
     # The token is either a horse or zebra ...
@@ -116,13 +125,18 @@ while play_again == "":
         # item to a horse
         if chosen_num % 2 == 0:
             chosen = "horse"
+            decoration = "H"
 
         # otherwise set it to a zebra
         else:
             chosen = "zebra"
+            decoration = "Z"
         balance -= 0.5
     # Output
-    print("You got a {}. Your balance is: ${:.2f}".format(chosen, balance))
+    feedback = "You got a {}. Your balance is: ${:.2f}".format(chosen, balance)
+
+    statement_generator(feedback, decoration)
+
     if balance < 1:
         play_again = "xxx"
         print("Sorry you have run out of money")
