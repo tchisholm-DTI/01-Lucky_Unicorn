@@ -34,7 +34,6 @@ def instructions():
     print()
     print("Hint: to quit while you are ahead, type 'xxx' instead of pressing <enter> ")
     print()
-    statement_generator("Let's get Started ...", "-")
     return ""
 
 
@@ -93,6 +92,7 @@ if played_before == "no":
 print()
 
 # Ask user how much they want to play with ...
+statement_generator("Let's get Started ...", "-")
 how_much = num_check("How much would you like to play with? ", 0, 10)
 
 balance = how_much
